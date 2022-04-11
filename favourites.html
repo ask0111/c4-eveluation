@@ -11,11 +11,11 @@
 <body>
     <div class="navbar">
         <a href="index.html">Home</a>
-        <a href="contact.html">Contect Us</a>
+        <a href="contact.html">Contact List</a>
         <a href="favourites.html">Favourites</a>
     </div>
     <table>
-        <thead>
+        <thead id="head">
             <td>
                 Contect Name
             </td>
@@ -29,6 +29,25 @@
     </table>
 </body>
 <script>
+    var userFav = JSON.parse(localStorage.getItem('favourites'));
+
+    userFav.forEach(element => {
+
+        var box = document.createElement('thead');
+        var tname = document.createElement('td');
+        tname.innerText = element.name;
+        var tmobile = document.createElement('td');
+        tmobile.innerText = element.mobile; 
+        var ttype = document.createElement('td');
+        ttype.innerText = element.tag; 
+        box.append(tname, tmobile, ttype);
+        
+        document.querySelector('table').append(box);
+        
+       
+
+    });
+
 
 </script>
 </html>
