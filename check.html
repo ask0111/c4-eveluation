@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #navi{
+            display: flex;
+           justify-content: space-evenly;
+           box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            
+        }
+        nav >a{
+            text-decoration: none;
+            color:rgb(36, 245, 245);
+            font-size: 30px;
+        }
+        #fom{
+            display: flex;
+            /* border: 1px solid red ; */
+            /* height: px; */
+            width: 50%;
+            margin: auto;
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+        align-items: center;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+        /* margin-top: 100px; */
+        padding: 100px;
+        }
+       #bot {
+        display:flex;
+        flex-direction: column;
+        width:40% ;
+        padding: 20px;
+        /* justify-content: center;
+        align-items: center; */
+        
+        }
+        input{
+            font-size: 25px;
+            /* padding: 30px; */
+        }
+        select{
+            font-size: 25px; 
+        }
+
+        .btn{
+            background-color: black;
+            color: white;
+            border-radius: 15px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div > 
+        <nav id="navi">
+            <a href="index.html">Home</a>
+            <a href="contacList.html">Contact List</a>
+            <a href="favorite.html">Favorites</a>
+        </nav>
+    </div>
+
+    <div id="fom">
+        <h1>Enter Your Contact  Details</h1>
+        <form action="" id="bot">
+            <input type="text" id="name" placeholder="Enter Contact name">
+            <hr>
+            <input type="text" id="num" placeholder="Enter Mobile Number">
+            <hr>
+            <select name="" id=" chois">
+                <option value="select"> Select Type</option>
+                <option value="family">Family </option>
+                <option value="friend">Friend</option>
+                <option value="others">Others</option>
+            </select>
+            <hr>
+            <input class="btn" type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+<script>
+
+    var reg  = JSON.parse(localStorage.getItem('conactList'))||[];
+    document.querySelector(".btn").addEventListener('click',()=>{
+        event.preventDefault();
+        var contactDetails={
+            name: document.querySelector('#name').value,
+            mobile: document.querySelector('#num').value,
+            choise: document.querySelector('#chois').value,
+        };
+        console.log(contactDetails)
+        reg.push(contactDetails);
+        localStorage.setItem('conactList',JSON.stringify(reg));
+
+    })
+</script>
+</html>

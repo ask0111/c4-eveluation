@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="navbar">
+        <a  id="home" href="index.html">Home</a>
+        <a id="contect" href="contact.html">Contect Us</a>
+        <a id="fav" href="favourites.html">Favourites</a>
+    </div>
+
+    <div class="userForm">
+        <form action="">
+            <h1>Enter Your Contact Details</h1>
+            <input id="name" type="text" placeholder="Enter Contect name">
+            <input id="mobileNum" type="text" placeholder="Enter Mobile Number">
+            <select name="select Type" id="selectUser">
+                <option value="select Type">select Type</option>
+                <option value="Friends">Friends</option>
+                <option value="family">family</option>
+                <option value="others">others</option>
+            </select>
+            <input id="btn" type="submit">
+        </form>
+    </div>
+    
+</body>
+<script>
+    var registerUser = JSON.parse(localStorage.getItem('contectList')) || [];
+
+    document.querySelector('#btn').addEventListener('click', ()=>{
+        event.preventDefault();
+        var userData = {
+            name: document.querySelector('#name').value,
+            mobile: document.querySelector('#mobileNum').value,
+            tag: document.querySelector('#selectUser').value,
+        }
+        console.log(userData)
+        registerUser.push(userData);
+        localStorage.setItem('contectList', JSON.stringify(registerUser));
+    });
+</script>
+</html>

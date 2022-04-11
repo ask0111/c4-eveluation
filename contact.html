@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cssTable.css">
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="contact.html">Contect Us</a>
+        <a href="favourites.html">Favourites</a>
+    </div>
+    <table>
+        <thead id="head">
+            <td>
+                Contect Name
+            </td>
+            <td>
+                Mobile Number
+            </td>
+            <td>
+                Type
+            </td>
+            <td>
+                Favourites
+            </td>
+        </thead>
+    </table>
+</body>
+<script>
+    var userData = JSON.parse(localStorage.getItem('contectList'));
+    userData.forEach(element => {
+        // event.preventDefault()
+        var box = document.createElement('thead');
+        var tname = document.createElement('td');
+        tname.innerText = element.name;
+        var tmobile = document.createElement('td');
+        tmobile.innerText = element.mobile; 
+        var ttype = document.createElement('td');
+        ttype.innerText = element.tag; 
+        var tfav = document.createElement('a');
+        tfav.innerText = 'Add to Fav'; 
+        box.append(tname, tmobile, ttype, tfav);
+        
+        document.querySelector('table').append(box);
+
+        tfav.addEventListener('click', ()=>{
+            
+        })
+
+    });
+
+
+</script>
+</html>
